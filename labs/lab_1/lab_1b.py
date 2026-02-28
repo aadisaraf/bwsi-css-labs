@@ -22,6 +22,8 @@ def simple_calculator(operation: str, num1: float, num2: float) -> float:
     Returns:
         float: The result of the operation.
     """
+    if not isinstance(num1, (int, float)) or not isinstance(num2, (int, float)):
+        raise ValueError("Both num1 and num2 must be numbers.")
 
     if operation == "add":
         return num1 + num2
@@ -47,8 +49,11 @@ def main():
     operation = input("Enter the operation (add, subtract, multiply, divide): ").strip().lower()
 
     # Perform the calculation and display the result
-    result = simple_calculator(operation, num1, num2)
-    print(f"The result of {operation}ing {num1} and {num2} is: {result}")
+    try:
+        result = simple_calculator(operation, num1, num2)
+        print(f"The result of {operation}ing {num1} and {num2} is: {result}")
+    except ValueError as error:
+        print(error)
 
 
 if __name__ == "__main__":
