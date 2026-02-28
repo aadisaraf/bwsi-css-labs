@@ -22,6 +22,8 @@ def simple_calculator(operation: str, num1: float, num2: float) -> float:
     Returns:
         float: The result of the operation.
     """
+    if not isinstance(num1, (int, float)) or not isinstance(num2, (int, float)):
+        raise ValueError("Both num1 and num2 must be numbers.")
 
     if operation == "add":
         return num1 + num2
